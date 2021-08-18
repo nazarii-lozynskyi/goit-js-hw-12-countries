@@ -32,16 +32,20 @@ function onSearch(e) {
 }
 
 function renderCountryCard(countries) {
-  console.log(countries);
   if (countries.length < 1) {
     return;
   }
   if (countries.length === 1) {
     refs.cardContainer.innerHTML = countryCardTpl(...countries);
+    //console.log(...countries);
   }
   if (countries.length >= 2 && countries.length <= 10) {
     refs.cardContainer.innerHTML = countriesList(countries);
+
+    //console.log(refs.cardContainer);
+    refs.cardContainer.addEventListener('click', onItemClick);
   }
+
   if (countries.length > 10) {
     error({
       title: 'Too many matches found.',
@@ -50,6 +54,7 @@ function renderCountryCard(countries) {
       delay: 2000,
     });
   }
+
   if (countries.status === 404) {
     error({
       title: 'Not found.',
@@ -67,4 +72,9 @@ function onFetchError() {
     styling: 'brighttheme',
     delay: 2000,
   });
+}
+
+function onItemClick(event) {
+  const inputValue = event.target.textContent;
+  console.log(event.target.textContent);
 }
