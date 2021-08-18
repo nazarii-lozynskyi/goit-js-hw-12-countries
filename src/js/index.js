@@ -50,6 +50,14 @@ function renderCountryCard(countries) {
       delay: 2000,
     });
   }
+  if (countries.status === 404) {
+    error({
+      title: 'Not found.',
+      text: ' Please enter a more specific query!',
+      styling: 'brighttheme',
+      delay: 2000,
+    });
+  }
 }
 
 function onFetchError() {
