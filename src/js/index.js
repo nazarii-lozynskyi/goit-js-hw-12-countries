@@ -27,6 +27,12 @@ function onSearch(e) {
 
   const inputValue = e.target.value.trim();
 
+  if (!inputValue) {
+    return;
+  } else if (inputValue) {
+    renderCountryCard(inputValue);
+  }
+
   refs.cardContainer.innerHTML = '';
   API.fetchCountry(inputValue).then(renderCountryCard).catch(onFetchError);
 }
