@@ -1,20 +1,10 @@
-//var debounce = require('lodash.debounce');
-import countryCardTpl from '../templates/country-card.hbs';
+const BASE_URL = 'https://restcountries.eu/rest/v2';
 
-const URL = 'https://restcountries.eu/rest/v2/name';
-
-const refs = { cardContainer: document.querySelector('.js-card-container') };
-fetch(`${URL}/ukraine`)
-  .then(response => {
+function fetchCountry(countryName) {
+  return fetch(`${BASE_URL}/name/${countryName}`).then(response => {
+    //console.log(response.json());
     return response.json();
-  })
-  .then(country => {
-    console.log(country[0]);
-    const markup = countryCardTpl(country[0]);
-    console.log(markup);
-
-    refs.cardContainer.innerHTML = markup;
-  })
-  .catch(error => {
-    console.log(error);
   });
+}
+
+export default { fetchCountry };
