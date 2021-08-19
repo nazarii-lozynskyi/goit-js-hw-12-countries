@@ -87,13 +87,21 @@ function renderCountryCard(countries) {
   }
 }
 
-function onFetchError() {
+// function onFetchError() {
+//   error({
+//     title: 'Too many matches found.',
+//     text: ' Please enter a more specific query!',
+//     styling: 'brighttheme',
+//     delay: 2000,
+//   });
+// }
+
+function onFetchError(messageError) {
   error({
-    title: 'Too many matches found.',
-    text: ' Please enter a more specific query!',
-    styling: 'brighttheme',
     delay: 2000,
+    text: `${messageError}`,
   });
+  console.log(`${messageError}`);
 }
 
 function onItemClick(event) {
