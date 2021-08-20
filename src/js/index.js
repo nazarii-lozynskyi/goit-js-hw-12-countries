@@ -69,22 +69,6 @@ function renderCountryCard(countries) {
       delay: 2000,
     });
   }
-
-  if (countries.status === 500) {
-    error({
-      title: 'Internal Server Error',
-      styling: 'brighttheme',
-      delay: 2000,
-    });
-  }
-
-  if (countries.status === 503) {
-    error({
-      title: 'Service Unavailable',
-      styling: 'brighttheme',
-      delay: 2000,
-    });
-  }
 }
 
 // function onFetchError() {
